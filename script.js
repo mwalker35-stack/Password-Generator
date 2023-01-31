@@ -1,63 +1,66 @@
-// Assignment code here pulling from the ID from the HTML code
-const characterAmountRange = document.getElementById('characterAmountRange')
-const characterAmountNumber = document.getElementById('characterAmountNumber')
-const includeUppercaseElement = document.getElementById('includeUppercase')
-const includeNumbersElement = document.getElementById('includeNumbers')
-const includeSymbolsElement = document.getElementById('includeSymbols')
-const form = document.getElementById('passwordGeneratorForm')
-const passwordDisplay = document.getElementById('passwordDisplay')
-const generatePasswordButtonEl = document.getElementById('generate')
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 
 
-//added variables for strings so they can be used in an array for the random generator
-const UPPERCASE_CHAR_CODES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-const LOWERCASE_CHAR_CODES = "abcdefghijklmnopqrstuvwxyz"
-const NUMBER_CHAR_CODES = "0123456789"
-const SYMBOL_CHAR_CODES = "!@#$%^&*()"
 
-const upperCaseArray = UPPERCASE_CHAR_CODES.split("");
-const lowerCaseArray = LOWERCASE_CHAR_CODES.split("");
-const numberArray = NUMBER_CHAR_CODES.split("");
-const symbolArray = SYMBOL_CHAR_CODES.split("");
+//added variables for strings so they can be used in random generator
+var UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var LowerCase = "abcdefghijklmnopqrstuvwxyz"
+var numbers = "0123456789"
+var specialCase = "!@#$%^&*()"
 
-characterAmountNumber.addEventListener('input', syncCharacterAmount)
-characterAmountRange.addEventListener('input', syncCharacterAmount)
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
+generatePassword = () => {
+ let characterAmount = prompt("How long do you want your password to be? (8-128 characters)")
+ if (characterAmount < 8 || characterAmount > 128) {
+  alert("Please enter a length between 8-128 characters");
+  return generatePassword()
+} if (characterAmount > 8 && characterAmount < 128 ) {
+  //confirm and promt user for selections
+  var numbers = confirm(`Click 'OK" if ${characterAmount} characters correct?`);
+  var UpperCase = prompt("Do you want upper case characters? Yes or No")
+  var LowerCase = prompt("Do you want lower case characters? Yes or No")
+  var specialCase = confirm("Are special characters OK?")
+} 
+//if no selection makes sure at least 1 selection
+if (UpperCase === null && LowerCase === null) {
+  alert("Please select at least UpperCase or LowerCase!")
+  return generatePassword();
+}
+if (numbers == true) {
+  var numbers = "0123456789"
+}
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const characterAmount = characterAmountNumber.value
-  const includeUppercase = includeUppercaseElement.checked
-  const includeNumbers = includeNumbersElement.checked
-  const includeSymbols = includeSymbolsElement.checked
-  const password = generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols)
-  passwordDisplay.innerText = password
-})
-//concat the array of code together 
-function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
-  let charCodes = lowerCaseArray
-  if (includeUppercase) {charCodes = charCodes.concat(upperCaseArray)}
-  if (includeSymbols) {charCodes = charCodes.concat(symbolArray)}
-  if (includeNumbers) {charCodes = charCodes.concat(numberArray)}
-  //console.log(charCodes)
+if (UpperCase == true) {
+  var UpperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+}
 
-// generates the random characters to passwordCharacters push to the array
-  const passwordCharacters = []
+if (LowerCase == true) {
+  var LowerCase = ["abcdefghijklmnopqrstuvwxyz"]
+}
+
+if (specialCase == true) {
+  var specialCase = ["!@#$%^&*()"]
+}
+
+// loops through selected options
+ var passwordCharacters = numbers + UpperCase + LowerCase + specialCase
+password = ""
   for (let i = 0; i < characterAmount; i++) {
-    const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-    passwordCharacters.push(characterCode)
+    var characterCode = passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
+    password += characterCode;
   }
-  return passwordCharacters.join('')
+return password
+
+
 }
-//slider and number function to match 
-function syncCharacterAmount(e) {
-  const value = e.target.value
-  characterAmountNumber.value = value
-  characterAmountRange.value = value
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
 }
-
-
-
-
-
-
