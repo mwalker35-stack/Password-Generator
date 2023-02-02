@@ -1,29 +1,38 @@
-# Password Generator Starter Code
-## Password Genereator
+# Password Generator
+  ![Github license](https://img.shields.io/badge/license-MIT-green.svg)
+  ## Table of Contents:
+  *[Description](#Description)
 
--Web app that generates a random password from lower case, uppercase, numbers, symbols.
--To provide a user with a secure password.
--A user can select the length 12 -128 characters. 
--HTML, CSS, Javascript used.
-## Instalation
+  *[Installation](#Installation)
 
-N/A
+  *[Usage](#Usage)
 
-## Usage
-This website to create a secure password with up to 128 characters and can be selected to have lower case, uppercase, numbers, symbols.
+  *[License](#License)
 
-## Credits
+  *[Contributing](#Contributing)
 
-N/A
+  *[Tests](#Tests)
 
-## License
+  *[Questions](#Questions)
 
-Please refer to the LICENSE in the repo.
+  ## Description: 
+  creates a unique password based on selection user chooses. 
 
+  ## Installation:
+  none
 
-## Links and image for site
-https://mwalker35-stack.github.io/challenge-3/
+  ## Usage:
+  in the browswer so users can create passwords quickly and unique given the characters they want to use.
 
-https://github.com/mwalker35-stack/challenge-3
+  ## License:
+  ![badge](https://img.shields.io/badge/license-MIT-green)
+  <br />
+  This application is covered by the MIT license. 
 
-![mocke up](./Assets/pagephoto3.png)
+  ## Contributing:
+  none
+
+  ## Questions:
+  If you have questions please Email: mwalke35@yahoo.com<br />
+  See: GitHub:  (https://github.com/mwalker35-stack)
+a
