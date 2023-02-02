@@ -20,13 +20,13 @@ generatePassword = () => {
 } if (characterAmount > 8 && characterAmount < 128 ) {
   //confirm and promt user for selections
   var numbers = confirm(`Click 'OK" if ${characterAmount} characters correct?`);
-  var UpperCase = prompt("Do you want upper case characters? Yes or No")
-  var LowerCase = prompt("Do you want lower case characters? Yes or No")
+  var UpperCase = confirm("Do you want upper case characters ok?")
+  var LowerCase = confirm("Do you want lower case characters ok?")
   var specialCase = confirm("Are special characters OK?")
 } 
 //if no selection makes sure at least 1 selection
-if (UpperCase === null && LowerCase === null) {
-  alert("Please select at least UpperCase or LowerCase!")
+if (UpperCase === null && LowerCase === null && specialCase === null) {
+  alert("Please select at least UpperCase or LowerCase! or specialCase")
   return generatePassword();
 }
 if (numbers == true) {
@@ -37,8 +37,16 @@ if (UpperCase == true) {
   var UpperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 }
 
+if (UpperCase == false) {
+  var UpperCase = [""]
+}
+
 if (LowerCase == true) {
   var LowerCase = ["abcdefghijklmnopqrstuvwxyz"]
+} 
+
+if (LowerCase == false) {
+  var LowerCase = [""]
 }
 
 if (specialCase == true) {
